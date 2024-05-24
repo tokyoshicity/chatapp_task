@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Api\V1\User;
+namespace App\Http\Requests\Api\V1\Chat;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IndexRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,10 @@ class IndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'page' => [
-                'int',
+            'userId' => [
+                'required',
+                'integer',
+                'exists:users,id',
                 'min:1',
             ],
         ];

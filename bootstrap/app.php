@@ -15,11 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->api(prepend: [
-            ResponseWithJson::class
+            ResponseWithJson::class,
         ]);
 
         $middleware->alias([
-            'auth.basic.once' => AuthenticateOnceWithBasicAuth::class
+            'auth.basic.once' => AuthenticateOnceWithBasicAuth::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
