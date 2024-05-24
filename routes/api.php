@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function () {
     Route::apiResource('users', 'UserController')
         ->only('store');
+
     Route::post('tokens', 'TokenController@store')
         ->middleware('auth.basic.once');
 
@@ -14,6 +15,9 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
 
         Route::apiResource('chats', 'ChatController')
             ->only('index', 'store', 'show');
+
+        Route::apiResource('chats.messages', 'MessageController')
+            ->only('index', 'store');
     });
 });
 

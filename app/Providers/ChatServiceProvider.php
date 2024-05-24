@@ -17,9 +17,4 @@ class ChatServiceProvider extends ServiceProvider
             return new ChatService();
         });
     }
-
-    public function provides(): array
-    {
-        return [ChatService::class];
-    }
 }
