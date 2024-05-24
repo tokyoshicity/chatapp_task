@@ -13,6 +13,7 @@ class TokenController extends Controller
     {
         $user = auth()->user();
         $token = $user->createToken('auth_token')->plainTextToken;
+
         return response()
             ->json(['token' => $token], Response::HTTP_CREATED);
     }

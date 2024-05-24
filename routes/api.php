@@ -5,12 +5,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function () {
     Route::apiResource('users', 'UserController')
-        ->except('destroy', 'update');
+        ->only('store');
     Route::post('tokens', 'TokenController@store')
         ->middleware('auth.basic.once');
 
     Route::middleware('auth:sanctum')->group(function () {
-        //
+        Route::apiResource('users', 'UserController')
+            ->only('index');
     });
 });
 
