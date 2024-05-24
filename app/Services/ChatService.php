@@ -23,8 +23,13 @@ class ChatService implements ChatContract
 
         $chat = ChatFactory::create($data);
 
-        $chat->users()->attach($newChatUser);
+        $this->addUserToChat($chat, $newChatUser);
 
         return $chat;
+    }
+
+    private function addUserToChat(Chat $chat, User $user): void
+    {
+        $chat->users()->attach($user);
     }
 }
