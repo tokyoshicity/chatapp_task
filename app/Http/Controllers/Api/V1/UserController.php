@@ -6,6 +6,7 @@ use App\DTO\UserData;
 use App\Factories\UserFactory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\User\CreateRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,12 +23,13 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateRequest $request)
+    public function store(CreateRequest $request): JsonResponse
     {
         $data = UserData::from($request);
         $user = UserFactory::create($data);
 
-        return response(['id' => $user->id], Response::HTTP_CREATED);
+        return response()
+            ->json(['id' => $user->id], Response::HTTP_CREATED);
     }
 
     /**
