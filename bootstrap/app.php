@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AuthenticateOnceWithBasicAuth;
+use App\Http\Middleware\LimitRequests;
 use App\Http\Middleware\ResponseWithJson;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -17,6 +18,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->api(prepend: [
             ResponseWithJson::class,
+            LimitRequests::class,
         ]);
 
         $middleware->alias([
