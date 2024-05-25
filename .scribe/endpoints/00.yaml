@@ -1,0 +1,138 @@
+name: Users
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/users
+    metadata:
+      groupName: Users
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a user'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      firstName:
+        name: firstName
+        description: ''
+        required: true
+        example: Foo
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      lastName:
+        name: lastName
+        description: ''
+        required: true
+        example: Bar
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: true
+        example: test@gmail.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: password
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      firstName: Foo
+      lastName: Bar
+      email: test@gmail.com
+      password: password
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: '{"id":1}'
+        headers: []
+        description: Success
+        custom: []
+      -
+        status: 422
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: 'User with given email already exists'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/users
+    metadata:
+      groupName: Users
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get a list of users'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer '
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: ''
+        required: false
+        example: 14
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanQueryParameters:
+      page: 14
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '[{"userId":1,"email":"test@gmail.com","firstName":"Foo","lastName":"Bar"}]'
+        headers: []
+        description: Success
+        custom: []
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: 'No access token provided'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
