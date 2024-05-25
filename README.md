@@ -63,10 +63,12 @@
     - `composer install`
 2. Configure environment
     - `cp .env.example .env`
-3. Run app
+3. Build app
+    - `sail build`
+4. Run app
     - `sail up -d`
-4. Generate app key
+5. Generate app key
     - `sail artisan key:generate`
-5. Run migrations
+6. Run migrations
     - `sail artisan migrate`
 
