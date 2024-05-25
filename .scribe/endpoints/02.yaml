@@ -1,0 +1,109 @@
+name: Chats
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/chats
+    metadata:
+      groupName: Chats
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get a list of chats'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer '
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters:
+      page:
+        name: page
+        description: ''
+        required: false
+        example: 10
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanQueryParameters:
+      page: 10
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '[{"chatId":1,"name":"Foo Bar","users":{"userId":1,"email":"test@gmail.com","firstName":"Foo","lastName":"Bar"},"timestamp":"24.05.2024 12:00:00"}]'
+        headers: []
+        description: Success
+        custom: []
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: 'No access token provided'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/chats
+    metadata:
+      groupName: Chats
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a new chat with user'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer '
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      userId:
+        name: userId
+        description: ''
+        required: true
+        example: 3
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      userId: 3
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"id":1}'
+        headers: []
+        description: Success
+        custom: []
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: 'No access token provided'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

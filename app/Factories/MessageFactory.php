@@ -12,7 +12,7 @@ class MessageFactory
         return Message::create([
             'user_id' => $data->userId,
             'chat_id' => $data->chatId,
-            'body' => $data->body,
+            'body' => $data->text,
         ]);
     }
 }

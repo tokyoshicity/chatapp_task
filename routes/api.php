@@ -14,7 +14,7 @@ Route::prefix('v1')->namespace('App\Http\Controllers\Api\V1')->group(function ()
             ->only('index');
 
         Route::apiResource('chats', 'ChatController')
-            ->only('index', 'store', 'show');
+            ->only('index', 'store');
 
         Route::apiResource('chats.messages', 'MessageController')
             ->only('index', 'store');

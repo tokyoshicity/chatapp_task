@@ -2,14 +2,14 @@
 
 namespace App\Traits;
 
-use App\Http\Requests\IndexRequest;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 trait Paginates
 {
-    public function paginate(Builder $query, IndexRequest $request): Builder
+    public function paginate(Builder $query, Request $request): Builder
     {
-        $page = $request->validated('page') ?: 1;
+        $page = $request->query('page', 1);
 
         return $query->forPage($page, 20);
     }

@@ -10,5 +10,5 @@ class MessageData extends Data
 
     public int $userId;
 
-    public string $body;
+    public string $text;
 }
