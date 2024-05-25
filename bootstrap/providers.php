@@ -2,4 +2,7 @@
 
 return [
     App\Providers\AppServiceProvider::class,
+    App\Providers\ChatServiceProvider::class,
+    App\Providers\MessageServiceProvider::class,
+    App\Providers\UserServiceProvider::class,
 ];
