@@ -35,7 +35,7 @@ class MessageControllerTest extends TestCase
     {
         $uri = sprintf('/api/v1/chats/%s/messages', $this->chat->id);
         $response = $this->post($uri, [
-            'body' => fake()->text,
+            'text' => fake()->text,
         ]);
 
         $response->assertStatus(Response::HTTP_CREATED);

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\DTO\ChatData;
+use App\Exceptions\UserNotFoundException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\Chat\StoreRequest;
 use App\Http\Resources\Api\V1\ChatResource;
@@ -62,6 +64,9 @@ class ChatController extends Controller
         return ChatResource::collection($chats);
     }
 
+    /**
+     * @throws UserNotFoundException
+     */
     #[Header('Authorization', 'Bearer ')]
     #[Endpoint('Create a new chat with user', authenticated: true)]
     #[BodyParam('userId', 'integer', required: true)]
@@ -74,7 +79,11 @@ class ChatController extends Controller
     #[Group('Chats')]
     public function store(ChatService $chatService, StoreRequest $request): JsonResponse
     {
-        $chat = $chatService->create($request);
+        $data = ChatData::from([
+            'ownerId' => auth()->user()->id,
+            'userId' => $request->validated('userId'),
+        ]);
+        $chat = $chatService->create($data);
 
         return response()
             ->json(['id' => $chat->id], Response::HTTP_CREATED);
