@@ -10,7 +10,7 @@ class ChatFactory
     public static function create(ChatData $data): Chat
     {
         return Chat::create([
-            'user_id' => $data->userId,
+            'user_id' => $data->ownerId,
             'name' => $data->name,
         ]);
     }
