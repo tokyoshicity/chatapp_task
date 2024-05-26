@@ -22,6 +22,7 @@ class ChatService implements ChatContract
         } catch (ModelNotFoundException $e) {
             throw new UserNotFoundException();
         }
+
         $data->name = $newChatUser->fullname;
 
         $chat = ChatFactory::create($data);

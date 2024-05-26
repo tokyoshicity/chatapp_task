@@ -33,4 +33,10 @@ return Application::configure(basePath: dirname(__DIR__))
 
             return $request->expectsJson();
         });
+
+        $exceptions->render(function (Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], $e->getCode());
+        });
     })->create();
