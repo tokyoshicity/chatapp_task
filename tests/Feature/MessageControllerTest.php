@@ -16,6 +16,7 @@ class MessageControllerTest extends TestCase
 
         $this->user = User::factory()->create();
         $this->chat = Chat::factory()->create();
+        $this->chat->users()->attach($this->user);
 
         Sanctum::actingAs($this->user);
     }
